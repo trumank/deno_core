@@ -364,7 +364,7 @@ impl JsRuntimeInspector {
             w.poll_state = PollState::Parked;
             w.parked_thread.replace(thread::current());
           }
-          _ => unreachable!(),
+          _ => {}
         };
         w.poll_state
       });
@@ -372,7 +372,7 @@ impl JsRuntimeInspector {
         PollState::Idle => break Ok(Poll::Pending), // Yield to task.
         PollState::Polling => {} // Poll the session handler again.
         PollState::Parked => thread::park(), // Park the thread.
-        _ => unreachable!(),
+        _ => {}
       };
     }
   }
