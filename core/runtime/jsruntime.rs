@@ -1013,7 +1013,7 @@ impl JsRuntime {
   }
 
   #[inline]
-  fn v8_isolate_ptr(&mut self) -> *mut v8::Isolate {
+  pub fn v8_isolate_ptr(&mut self) -> *mut v8::Isolate {
     &mut **self.inner.v8_isolate as _
   }
 
